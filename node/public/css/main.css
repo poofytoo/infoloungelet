@@ -9,3 +9,24 @@
 
 Note that whatever extension your font-family uses, replace the 'ttf' with that extension
 */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+
+h1 {
+  font-size: 300px;
+  position: relative;
+  height: 300px;
+  top: 50%;
+  margin-top: -150px;
+  vertical-align: middle;
+}
