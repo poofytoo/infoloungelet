@@ -40,7 +40,7 @@ $(function() {
 
   var currentTime = function() {
     var d = new Date();
-    return d.getUTCHours() + '<span class="colon-shift">:</span>' + d.getUTCMinutes();
+    return d.getHours() + '<span class="colon-shift">:</span>' + d.getMinutes();
   }
 
   var currentDate = function() {
@@ -49,8 +49,8 @@ $(function() {
     "OCT", "NOV", "DEC");
 
     var d = new Date();
-    var curr_date = d.getUTCDate();
-    var curr_month = d.getUTCMonth();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth();
     return m_names[curr_month] + ' ' + curr_date
   }
 
