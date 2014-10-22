@@ -3,6 +3,7 @@ $green: #B7E3C0;
 $blue: #B8D0DD;
 $purple: #DBBAE5;
 $pink: #F39DD4;
+$orange: #FFB347;
 
 html, body {
   height: 100%;
@@ -64,4 +65,14 @@ h1 {
 .pink {
   background-color: $pink;
   color: #fff;
+}
+
+.orange {
+  background-color: $orange;
+  color: #fff;
+}
+
+.colon-shift {
+  position: relative;
+  top: -25px;
 }

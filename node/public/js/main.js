@@ -1,5 +1,6 @@
 $(function() {
   var ref = new Firebase('https://poofytoo.firebaseio.com/infoloungelet');
+  var lastColor = '';
 
   // Force Reset Page
   ref.child('refresh').on('value', function(s) {
@@ -11,21 +12,47 @@ $(function() {
   })
 
   var action = function() {
+    currentTime();
     slideOverlay();
   }
 
   var randomColor = function() {
-    var colors = ['green', 'purple', 'blue', 'pink', 'white'];
-    return colors[Math.floor(Math.random() * colors.length)];
+    var colors = ['green', 'purple', 'blue', 'pink', 'white', 'orange', 'orange', 'blue'];
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    while (color == lastColor) {
+      color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    lastColor = color;
+    return color;
   }
 
   var randomGreeting = function() {
     var greetings = ['HELLO!', 'HI!'];
-    if (Math.random() < 0.1) {
-      return greetings[1];
+    var r = Math.random();
+    if (r < 0.4) {
+      return currentTime();
+    } else if (r < 0.8) {
+      return currentDate();
     } else {
-      return greetings[0];
+      return 'HELLO!';
     }
+  }
+
+  var currentTime = function() {
+    var d = new Date();
+    return d.getHours() + '<span class="colon-shift">:</span>' + d.getMinutes();
+  }
+
+  var currentDate = function() {
+    var m_names = new Array("JAN", "FEB", "MAR", 
+    "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", 
+    "OCT", "NOV", "DEC");
+
+    var d = new Date();
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth();
+    var curr_year = d.getFullYear();
+    return m_names[curr_month] + ' ' + curr_date
   }
 
   var slideOverlay = function() {
@@ -41,7 +68,7 @@ $(function() {
       .appendTo('body')
       .show();
 
-    $('.c1').find('h1').text(randomGreeting());
+    $('.c1').find('h1').html(randomGreeting());
     $('.c1').animate({f: fValue},
     {
       step: function(now, fx) {
@@ -52,7 +79,7 @@ $(function() {
         }
       },
       easing: 'easeInCubic',
-      duration: 500,
+      duration: 1000,
       complete: function() {
         $('.b1').remove();
         $(this)

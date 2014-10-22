@@ -47,3 +47,11 @@ h1 {
 .pink {
   background-color: #f39dd4;
   color: #fff; }
+
+.orange {
+  background-color: #ffb347;
+  color: #fff; }
+
+.colon-shift {
+  position: relative;
+  top: -25px; }
