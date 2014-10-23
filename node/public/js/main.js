@@ -40,7 +40,15 @@ $(function() {
 
   var currentTime = function() {
     var d = new Date();
-    return d.getHours() + '<span class="colon-shift">:</span>' + d.getMinutes();
+    var m = '';
+    var n = '';
+    if (d.getHours() < 10) {
+      m = '0';
+    }
+    if (d.getMinutes() < 10) {
+      n = '0';
+    }
+    return m + d.getHours() + '<span class="colon-shift">:</span>' + n + d.getMinutes();
   }
 
   var currentDate = function() {
@@ -89,7 +97,7 @@ $(function() {
 
   }
 
-  var INTERVAL = 10000;
+  var INTERVAL = 2000;
 
   action();
   var timer = window.setInterval(action, INTERVAL);
